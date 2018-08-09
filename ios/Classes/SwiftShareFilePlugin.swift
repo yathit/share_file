@@ -1,7 +1,10 @@
 import Flutter
 import UIKit
     
-public class SwiftShareFilePlugin: NSObject, FlutterPlugin {
+public class SwiftShareFilePlugin: NSObject, FlutterPlugin, UIDocumentInteractionControllerDelegate {
+
+    var docController:UIDocumentInteractionController!
+
   public static func register(with registrar: FlutterPluginRegistrar) {
     let channel = FlutterMethodChannel(name: "share_file", binaryMessenger: registrar.messenger())
     let instance = SwiftShareFilePlugin()
@@ -16,14 +19,19 @@ public class SwiftShareFilePlugin: NSObject, FlutterPlugin {
            result(FlutterError.init(code: "file_not_exists",
                    message: "File does not exists.",
                    details: nil));
+       } else {
+           let fileURL = URL.init(fileURLWithPath: path)
+           docController = UIDocumentInteractionController.init(url: fileURL)
+           docController.uti = "public.jpeg";
+           docController.name = "image.jpeg";
+           docController.delegate = self;
+           docController.presentPreview(animated: false);
+           result("opening for  " + path)
        }
-       let fileURL = URL.init(fileURLWithPath: path)
-       let documentController = UIDocumentInteractionController.init(url: fileURL)
-       documentController.presentPreview(animated: true);
-       result("opening for  " + path)
     } else {
       result(FlutterMethodNotImplemented);
     }
-
   }
+    
+    
 }

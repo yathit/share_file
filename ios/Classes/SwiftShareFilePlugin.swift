@@ -9,6 +9,21 @@ public class SwiftShareFilePlugin: NSObject, FlutterPlugin {
   }
 
   public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
-    result("iOS " + UIDevice.current.systemVersion)
+   if ("open_file" == call.method) {
+       let map = call.arguments as! NSDictionary;
+       let path = map["file_path"] as! String;
+       if (!FileManager.default.fileExists(atPath: path)) {
+           result(FlutterError.init(code: "file_not_exists",
+                   message: "File does not exists.",
+                   details: nil));
+       }
+       let fileURL = URL.init(fileURLWithPath: path)
+       let documentController = UIDocumentInteractionController.init(url: fileURL)
+       documentController.presentPreview(animated: true);
+       result("opening for  " + path)
+    } else {
+      result(FlutterMethodNotImplemented);
+    }
+
   }
 }

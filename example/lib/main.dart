@@ -39,6 +39,7 @@ class _MyAppState extends State<MyApp> {
     setState(() {
       _openResult = rs;
     });
+    return rs;
   }
 
   @override

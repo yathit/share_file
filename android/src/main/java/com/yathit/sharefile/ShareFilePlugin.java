@@ -35,10 +35,13 @@ public class ShareFilePlugin implements MethodCallHandler {
 		channel.setMethodCallHandler(new ShareFilePlugin(registrar));
 	}
 
+	@SuppressLint("HardwareIds")
 	@Override
 	public void onMethodCall(MethodCall call, Result result) {
 		Context context = registrar.context();
-		if (call.method.equals("open_file")) {
+		if (call.method.equals("device_id")) {
+			result.success(Secure.getString(activity.getContentResolver(), Secure.ANDROID_ID));
+		} else if (call.method.equals("open_file")) {
 			String filePath = call.argument("file_path").toString();
 			File file = new File(filePath);
 			if (!file.exists()) {

@@ -28,6 +28,8 @@ public class SwiftShareFilePlugin: NSObject, FlutterPlugin, UIDocumentInteractio
            docController.presentPreview(animated: false);
            result("opening for  " + path)
        }
+    } else if ("device_id" == call.method) {
+      result(UIDevice.current.identifierForVendor?.uuidString)
     } else {
       result(FlutterMethodNotImplemented);
     }

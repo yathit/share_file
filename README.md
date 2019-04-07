@@ -1,6 +1,6 @@
 # share_file
 
-A new flutter plugin project.
+Open file and get device id.
 
 ## Getting Started
 

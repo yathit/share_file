@@ -10,7 +10,7 @@ class ShareFile {
     return await _channel.invokeMethod('open_file', map);
   }
 
-  static Future<String> getDeviceId(String filePath) async {
-    return await _channel.invokeMethod('device_id');
+  static Future<String> getDeviceId() {
+    return _channel.invokeMethod('device_id');
   }
 }

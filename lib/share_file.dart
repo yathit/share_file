@@ -11,6 +11,6 @@ class ShareFile {
   }
 
   static Future<String> getDeviceId() {
-    return _channel.invokeMethod('device_id');
+    return _channel.invokeMethod('device_id', {});
   }
 }

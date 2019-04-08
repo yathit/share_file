@@ -31,7 +31,7 @@ public class SwiftShareFilePlugin: NSObject, FlutterPlugin, UIDocumentInteractio
     } else if ("device_id" == call.method) {
       result(UIDevice.current.identifierForVendor?.uuidString);
     } else {
-      result(UIDevice.current.identifierForVendor?.uuidString);
+      result(FlutterMethodNotImplemented);
     }
   }
     

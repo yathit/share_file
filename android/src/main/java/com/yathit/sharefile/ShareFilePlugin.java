@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.support.v4.content.FileProvider;
+import android.annotation.SuppressLint;
+import android.provider.Settings.Secure;
 
 import java.io.File;
 

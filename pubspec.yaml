@@ -1,11 +1,11 @@
 name: share_file
 description: A new flutter plugin project.
-version: 1.0.0
+version: 0.1.7
 author:
 homepage:
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.0.0 <3.0.0"
 
 dependencies:
   flutter:

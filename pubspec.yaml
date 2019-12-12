@@ -2,7 +2,7 @@ name: share_file
 description: A new flutter plugin project.
 version: 0.1.7
 author:
-homepage:
+homepage: Yathit
 
 environment:
   sdk: ">=2.0.0 <3.0.0"

@@ -13,4 +13,10 @@ class ShareFile {
   static Future<String> getDeviceId() {
     return _channel.invokeMethod('device_id', {});
   }
+
+  static Future<String> getSigningCertSha1(String packageName) {
+    return _channel.invokeMethod('getSigningCertSha1', {
+      'package': packageName,
+    });
+  }
 }

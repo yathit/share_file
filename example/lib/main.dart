@@ -15,7 +15,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   String _openResult = 'Unknown';
-  String fileName;
+  String? fileName;
 
   @override
   void initState() {
@@ -27,7 +27,7 @@ class _MyAppState extends State<MyApp> {
   init() async {
     final dir = await getApplicationDocumentsDirectory();
     fileName = join(dir.path, 'test.txt');
-    File file = new File(fileName);
+    File file = new File(fileName!);
     await file.writeAsString("This is a test");
     setState(() {
       _openResult = "ready";
@@ -35,11 +35,11 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future<String> openFile() async {
-    var rs = await ShareFile.open(fileName);
+    var rs = await ShareFile.open(fileName!);
     setState(() {
-      _openResult = rs;
+      _openResult = rs!;
     });
-    return rs;
+    return rs!;
   }
 
   @override
